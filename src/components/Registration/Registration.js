@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Login from "../Login/Login";
 // import Login from "../Login/Login";
 
 function Registration() {
@@ -21,12 +23,12 @@ function Registration() {
       setFlag(true);
     } else {
       setFlag(false);
-      localStorage.setItem("sanskarEmail", JSON.stringify(email));
+      localStorage.setItem("asifEmail", JSON.stringify(email));
       localStorage.setItem(
-        "sanskarPassword",
+        "asifPassword",
         JSON.stringify(password)
       );
-      console.log("Saved in Local Storage");
+    //   console.log("Saved in Local Storage");
 
       setLogin(!login);
     }
@@ -93,10 +95,10 @@ function Registration() {
               <button type="submit" className="btn btn-dark btn-lg btn-block mt-3">
                 Register
               </button>
-              <p onClick={handleClick} className="forgot-password text-right">
+              <Link to='/login' style={{textDecoration: 'none'}}><p onClick={handleClick} className="forgot-password text-right">
                 Already registered{" "}log in?
                 
-              </p>
+              </p></Link>
               </div>
               {flag && (
                 <Alert color="primary" variant="danger">
@@ -105,7 +107,7 @@ function Registration() {
               )}
             </form>
           ) : (
-            null
+           <Login />
           )}
         </div>
     
